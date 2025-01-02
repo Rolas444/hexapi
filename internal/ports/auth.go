@@ -8,6 +8,8 @@ import (
 
 type Auth interface {
 	Login(username, password string) (string, error)
+	GenerateToken(user domain.User) (string, error)
+	VerifyToken(token string) bool
 }
 
 type AuthRepository interface {

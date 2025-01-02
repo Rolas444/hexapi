@@ -13,11 +13,13 @@ var user domain.User
 var users []domain.User
 
 type Repository struct {
-	Client *gorm.DB
+	Client  *gorm.DB
+	Encrypt ports.EncryptService
 }
 
-func NewRepository(client *gorm.DB) *Repository {
+func NewRepository(client *gorm.DB, encryptService ports.EncryptService) *Repository {
 	return &Repository{
-		Client: client,
+		Client:  client,
+		Encrypt: encryptService,
 	}
 }
